@@ -8,18 +8,13 @@
     <p>Coordinates: <span id="coords-display">Loading...</span></p>
 
     <script>
-        // Debug what’s coming through
-        console.log('Full URL:', window.location.href);
-        console.log('Query string:', window.location.search);
-        console.log('Extracted coords:', window.location.search.substring(1));
-
         // Grab coords from URL, default if empty
         const coords = window.location.search.substring(1) || '40.7128, -74.0060';
         document.getElementById('coords-display').textContent = coords;
 
+        // Copy to clipboard silently
         navigator.clipboard.writeText(coords)
-            .then(() => alert('Coordinates copied to clipboard: ' + coords))
-            .catch(err => alert('Failed to copy: ' + err));
+            .catch(err => console.error('Failed to copy: ', err));
     </script>
 </body>
 </html>
