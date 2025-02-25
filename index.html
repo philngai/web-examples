@@ -8,12 +8,11 @@
     <p>Coordinates: <span id="coords-display">Loading...</span></p>
 
     <script>
-        // Get coordinates from URL query parameter
         const urlParams = new URLSearchParams(window.location.search);
-        const coords = urlParams.get('coords') || '40.7128° N, 74.0060° W'; // Default if none provided
+        // Keep coords as raw numbers, default to something like NYC if none provided
+        const coords = urlParams.get('coords') || '40.7128, -74.0060';
         document.getElementById('coords-display').textContent = coords;
 
-        // Auto-copy on page load
         navigator.clipboard.writeText(coords)
             .then(() => alert('Coordinates copied to clipboard: ' + coords))
             .catch(err => alert('Failed to copy: ' + err));
