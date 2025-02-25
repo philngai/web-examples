@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <style>
+    #copyLink {
+      font-size: 24px; /* Adjust this value to make it bigger or smaller */
+      text-decoration: none; /* Optional: removes underline */
+    }
+  </style>
+</head>
 <body>
   <a href="#" id="copyLink">Copy Coordinates</a>
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const coords = urlParams.get('coords') || '40.7128,-74.0060'; // Default if no coords provided
+    const query = window.location.search.substring(1);
+    const coords = query || '40.7128,-74.0060';
     document.getElementById('copyLink').onclick = function() {
       navigator.clipboard.writeText(coords);
       alert('Copied: ' + coords);
