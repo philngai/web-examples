@@ -1,78 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Two Column Layout</title>
-    <style>
-        /* Reset default margins and padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Container for the columns */
-        .container {
-            display: flex;
-            min-height: 100vh; /* Full viewport height */
-            max-width: 1200px; /* Optional: maximum width */
-            margin: 0 auto; /* Center the container */
-        }
-
-        /* Left column (narrower) */
-        .left-column {
-            width: 30%; /* 30% of container width */
-            background-color: #f0f0f0;
-            padding: 20px;
-        }
-
-        /* Right column (wider) */
-        .right-column {
-            width: 70%; /* 70% of container width */
-            background-color: #ffffff;
-            padding: 20px;
-        }
-
-        /* Responsive design for mobile */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .left-column, .right-column {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
+<html>
 <body>
-    <div class="container">
-        <div class="left-column">
-            <h2>Left Column</h2>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Consectetur adipiscing elit.</p>
-            <p>Sed do eiusmod tempor incididunt.</p>
-            <p>Ut labore et dolore magna.</p>
-            <p>At vero eos et accusamus.</p>
-            <p>Et iusto odio dignissimos.</p>
-            <p>Qui blanditiis praesentium.</p>
-            <p>Voluptatum deleniti atque.</p>
-            <p>Corrupti quos dolores et.</p>
-            <p>Quas molestias excepturi.</p>
-        </div>
-        <div class="right-column">
-            <h2>Right Column</h2>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>Consectetur adipiscing elit.</p>
-            <p>Sed do eiusmod tempor incididunt.</p>
-            <p>Ut labore et dolore magna.</p>
-            <p>At vero eos et accusamus.</p>
-            <p>Et iusto odio dignissimos.</p>
-            <p>Qui blanditiis praesentium.</p>
-            <p>Voluptatum deleniti atque.</p>
-            <p>Corrupti quos dolores et.</p>
-            <p>Quas molestias excepturi.</p>
-        </div>
-    </div>
+  <a href="#" id="copyLink">Copy Coordinates</a>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const coords = urlParams.get('coords') || '40.7128,-74.0060'; // Default if no coords provided
+    document.getElementById('copyLink').onclick = function() {
+      navigator.clipboard.writeText(coords);
+      alert('Copied: ' + coords);
+    };
+  </script>
 </body>
 </html>
