@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <style>
-    p {
-      font-size: 48px; /* Bigger text for the message */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Copy GPS Coordinates</title>
 </head>
 <body>
-  <p>Coordinates copied to clipboard!</p>
-  <script>
-    const query = window.location.search.substring(1);
-    const coords = query || '40.7128,-74.0060';
-    navigator.clipboard.writeText(coords);
-  </script>
+    <p>Coordinates: <span id="coords-display">Loading...</span></p>
+
+    <script>
+        // Get coordinates from URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const coords = urlParams.get('coords') || '40.7128° N, 74.0060° W'; // Default if none provided
+        document.getElementById('coords-display').textContent = coords;
+
+        // Auto-copy on page load
+        navigator.clipboard.writeText(coords)
+            .then(() => alert('Coordinates copied to clipboard: ' + coords))
+            .catch(err => alert('Failed to copy: ' + err));
+    </script>
 </body>
 </html>
