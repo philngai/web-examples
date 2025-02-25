@@ -8,9 +8,8 @@
     <p>Coordinates: <span id="coords-display">Loading...</span></p>
 
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        // Keep coords as raw numbers, default to something like NYC if none provided
-        const coords = urlParams.get('coords') || '40.7128, -74.0060';
+        // Grab everything after the ? in the URL
+        const coords = window.location.search.substring(1) || '40.7128, -74.0060';
         document.getElementById('coords-display').textContent = coords;
 
         navigator.clipboard.writeText(coords)
