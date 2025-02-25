@@ -2,21 +2,17 @@
 <html>
 <head>
   <style>
-    #copyLink {
-      font-size: 24px; /* Adjust this value to make it bigger or smaller */
-      text-decoration: none; /* Optional: removes underline */
+    p {
+      font-size: 48px; /* Bigger text for the message */
     }
   </style>
 </head>
 <body>
-  <a href="#" id="copyLink">Copy Coordinates</a>
+  <p>Coordinates copied to clipboard!</p>
   <script>
     const query = window.location.search.substring(1);
     const coords = query || '40.7128,-74.0060';
-    document.getElementById('copyLink').onclick = function() {
-      navigator.clipboard.writeText(coords);
-      alert('Copied: ' + coords);
-    };
+    navigator.clipboard.writeText(coords);
   </script>
 </body>
 </html>
